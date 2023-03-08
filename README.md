@@ -25,7 +25,7 @@ class `Identicon` (color `string` [optional])
 ## Examlpe
 
 ```js
-const Identicon = require('./identicon.js');
+const Identicon = require('./src/identicon.js');
 let image = new Identicon("blue");
 console.log(image.icon);
 // console: 
