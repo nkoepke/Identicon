@@ -1,3 +1,5 @@
+![ConsoleCharts](https://github.com/nkoepke/Identicon/blob/main/images/Identicon.png?raw=true)
+
 # Identicon
 JavaScript variant of GitHub Identicons
 
