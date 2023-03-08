@@ -1,9 +1,9 @@
 class Identicon {
     constructor(color) {
-        this.color = color || 'green';
-        this.grid = [];
-        this.randomize();
-        this.icon = this.#render();
+        this.color = color || 'green'; // color of the icon
+        this.grid = []; // internal representation of the icon
+        this.randomize(); // generate a random icon when the class is instantiated
+        this.icon = this.#render(); // the icon as an SVG string
     }
     randomize() {
         for(let i = 0; i < 5; i++) {
@@ -17,11 +17,13 @@ class Identicon {
         for(let i = 0; i < 5; i++) {
             for(let j = 0; j < 5; j++) {
                 if(this.grid[i][j]) {
-                    inner += `<rect x='${j * 4}' y='${i * 4}' width='4' height='4' ry='0' fill='${this.color}'/>`;
+                    let a = i + 0.4;
+                    let b = j + 0.4;
+                    inner += `<rect x='${b * 8}' y='${a * 8}' width='8' height='8' ry='0' fill='${this.color}'/>`;
                 }
             }
         }
-        return `<svg width='24' height='24' version='1.1' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>${inner}</svg>`;
+        return `<svg width='48' height='48' version='1.1' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'>${inner}</svg>`;
     }
     #generateRow() {
         let arr = [];
