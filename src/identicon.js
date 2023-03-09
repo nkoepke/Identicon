@@ -10,7 +10,21 @@ class Identicon {
             this.grid[i] = this.#generateRow();
         }
         this.icon = this.#render();
-        return this.icon;
+        //check if the icon is not empty
+        let elements = 0;
+        for(let i = 0; i < this.grid.length; i++) {
+            for(let j = 0; j < this.grid[i].length; j++) {
+                if(this.grid[i][j]) {
+                    elements++;
+                }
+            }
+        }
+        if(elements < 5) { // if the icon has less than 5 elements, generate a new one
+            this.randomize();
+        }
+        else{
+            return this.icon;
+        }
     }
     #render() {
         let inner = '';
