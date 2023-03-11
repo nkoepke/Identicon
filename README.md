@@ -8,7 +8,7 @@ JavaScript variant of GitHub Identicons
 
 ## Identicon class
 
-class `Identicon` (color `string` [optional])
+class `Identicon` (color `string` [optional], backgroundColor `string` [optional])
 
 * `grid`
     * Internal representation of the icon.
@@ -16,32 +16,35 @@ class `Identicon` (color `string` [optional])
 * `color`
     * Color of the icon as a css color. Default `green`.
 
-* `icon`
-    * Icon as SVG string
+* `backgroundColor`
+    * Color of the icon as a css color. Default `transparent`.
+
+* `render()`
+    * Icon as SVG string.
 
 * `randomize()`
-    * Sets new random pattern to `grid`. Returns the `icon` attribute.
+    * Sets new random pattern to `grid`. Returns the `render()` Method.
 
 ## Examlpe
 
 ```js
 const Identicon = require('./src/identicon.js');
-let image = new Identicon("blue");
-console.log(image.icon);
-// console: 
-/*
-<svg width="48" height="48" version="1.1" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect x="11.2" y="3.2" width="8" height="8" ry="0" fill="#FFBE0B"></rect><rect x="27.2" y="3.2" width="8" height="8" ry="0" fill="#FFBE0B"></rect><rect x="3.2" y="11.2" width="8" height="8" ry="0" fill="#FFBE0B"></rect><rect x="11.2" y="11.2" width="8" height="8" ry="0" fill="#FFBE0B"></rect><rect x="19.2" y="11.2" width="8" height="8" ry="0" fill="#FFBE0B"></rect><rect x="27.2" y="11.2" width="8" height="8" ry="0" fill="#FFBE0B"></rect><rect x="35.2" y="11.2" width="8" height="8" ry="0" fill="#FFBE0B"></rect><rect x="3.2" y="19.2" width="8" height="8" ry="0" fill="#FFBE0B"></rect><rect x="11.2" y="19.2" width="8" height="8" ry="0" fill="#FFBE0B"></rect><rect x="19.2" y="19.2" width="8" height="8" ry="0" fill="#FFBE0B"></rect><rect x="27.2" y="19.2" width="8" height="8" ry="0" fill="#FFBE0B"></rect><rect x="35.2" y="19.2" width="8" height="8" ry="0" fill="#FFBE0B"></rect><rect x="11.2" y="27.2" width="8" height="8" ry="0" fill="#FFBE0B"></rect><rect x="19.2" y="27.2" width="8" height="8" ry="0" fill="#FFBE0B"></rect><rect x="27.2" y="27.2" width="8" height="8" ry="0" fill="#FFBE0B"></rect><rect x="19.2" y="35.2" width="8" height="8" ry="0" fill="#FFBE0B"></rect></svg>
-*/
+let image = new Identicon("purple", "white");
+console.log(image.render());
 ```
 
 For web browser usage, use as commonJS module or remove ```module.exports = Identicon;``` from the JS file and use it like a regular class.
 Then use
 ```js
-let image = new Identicon("blue");
-console.log(image.icon);
+let image = new Identicon();
+console.log(image.render());
 
 // Set new color and new random image
 image.color = "#e61c1c";
 icon.randomize();
-console.log(image.icon);
+console.log(image.render());
 ```
+
+## Todo
+
+* Setting icon with seeds (shape and color)

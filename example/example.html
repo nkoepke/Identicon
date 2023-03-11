@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <title>Identicon Example</title>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <meta name="description" content="" />
+
+  <script src="../src/identicon.js"></script>
+
+</head>
+
+<body>
+
+  <h1>Identicon</h1>
+  <div style="display: flex;">
+    <div id="icon1" style="border: 1px solid black; width: fit-content; margin: 15px;"></div>
+    <div id="icon2" style="border: 1px solid black; width: fit-content; margin: 15px;"></div>
+    <div id="icon3" style="border: 1px solid black; width: fit-content; margin: 15px;"></div>
+    <div id="icon4" style="border: 1px solid black; width: fit-content; margin: 15px;"></div>
+  </div>
+
+  <script>
+    let image = new Identicon();
+    document.getElementById("icon1").innerHTML = image.render();
+
+    image.color = "#1774d1";
+    image.randomize();
+    document.getElementById("icon2").innerHTML = image.render();
+
+    image.color = "red";
+    image.randomize();
+    document.getElementById("icon3").innerHTML = image.render();
+    
+    image.color = "blue";
+    document.getElementById("icon4").innerHTML = image.randomize();;
+  </script>
+
+</body>
+
+</html>
