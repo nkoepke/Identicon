@@ -8,16 +8,30 @@ JavaScript variant of GitHub Identicons
 
 ## Identicon class
 
-class `Identicon` (color `string` [optional], backgroundColor `string` [optional])
+class `Identicon` (options [optional] `object`)
+
+### Options (Constructor)
+
+* color `string` [optional]
+
+* backgroundColor `string` [optional]
+
+* seed `string` [optional] (String of any length to set a specific color for `color`. For example the seed "Test" will always set the color to green.)
+
+You don't have to set the colors in the constructor. You can always change them by setting the attributes after the initialization of the object.
+
+### Attributes
 
 * `grid`
-    * Internal representation of the icon.
+    * Internal representation of the icon as a two dimensional array.
 
 * `color`
     * Color of the icon as a css color. Default `green`.
 
 * `backgroundColor`
     * Color of the icon as a css color. Default `transparent`.
+
+### Methods
 
 * `render()`
     * Icon as SVG string.
@@ -29,7 +43,7 @@ class `Identicon` (color `string` [optional], backgroundColor `string` [optional
 
 ```js
 const Identicon = require('./src/identicon.js');
-let image = new Identicon("purple", "white");
+let image = new Identicon({color: "purple", backgroundColor: "white"});
 console.log(image.render());
 ```
 
@@ -44,7 +58,3 @@ image.color = "#e61c1c";
 icon.randomize();
 console.log(image.render());
 ```
-
-## Todo
-
-* Setting icon with seeds (shape and color)

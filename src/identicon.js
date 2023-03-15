@@ -1,7 +1,12 @@
 class Identicon {
-    constructor(color, backgroundColor) {
-        this.color = color || 'green'; // color of the icon
-        this.backgroundColor = backgroundColor || "transparent"; // background color
+    constructor(options) {
+        if(options.seed){
+            this.color = this.#getColor(options.seed); // generate a color based on the seed (string of any length)
+        }
+        else{
+            this.color = options.color || 'green'; // color of the icon
+        }
+        this.backgroundColor = options.backgroundColor || "transparent"; // background color
         this.grid = []; // internal representation of the icon
         this.randomize(); // generate a random icon when the class is instantiated
     }
@@ -51,6 +56,26 @@ class Identicon {
             arr.push(arr[i]);
         }
         return arr;
+    }
+    #getArbitrary(seed, min, max) {
+        return Math.floor(this.#hashFnv32a(seed, false, 7)/10000000000 * (max - min) + min);
+    }
+    #hashFnv32a(str, asString, seed) {
+        var i, l,
+            hval = (seed === undefined) ? 0x811c9dc5 : seed;
+    
+        for (i = 0, l = str.length; i < l; i++) {
+            hval ^= str.charCodeAt(i);
+            hval += (hval << 1) + (hval << 4) + (hval << 7) + (hval << 8) + (hval << 24);
+        }
+        if( asString ){
+            // Convert to 8 digit hex string
+            return ("0000000" + (hval >>> 0).toString(16)).substr(-8);
+        }
+        return hval >>> 0;
+    }
+    #getColor(str){
+        return "hsl(" + this.#getArbitrary(str,0,360) + "," + this.#getArbitrary(str,60,100) + "%," + this.#getArbitrary(str,40,60) + "%)";
     }
 }
 /*
