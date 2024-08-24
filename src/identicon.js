@@ -61,10 +61,8 @@ class Identicon {
         return Math.floor(this.#hashFnv32a(seed, false, 7)/10000000000 * (max - min) + min);
     }
     #hashFnv32a(str, asString, seed) {
-        var i, l,
-            hval = (seed === undefined) ? 0x811c9dc5 : seed;
-    
-        for (i = 0, l = str.length; i < l; i++) {
+        let hval = (seed === undefined) ? 0x811c9dc5 : seed;
+        for (let i = 0, let l = str.length; i < l; i++) {
             hval ^= str.charCodeAt(i);
             hval += (hval << 1) + (hval << 4) + (hval << 7) + (hval << 8) + (hval << 24);
         }
