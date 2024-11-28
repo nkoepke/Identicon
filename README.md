@@ -39,7 +39,7 @@ You don't have to set the colors in the constructor. You can always change them 
 * `randomize()`
     * Sets new random pattern to `grid`. Returns the `render()` Method.
 
-## Examlpe
+## Example
 
 ```js
 const Identicon = require('./src/identicon.js');
